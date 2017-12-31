@@ -1,0 +1,5 @@
+# vim temporary backup
+.*.sw*
+
+# object files
+*.o
