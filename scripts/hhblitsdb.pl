@@ -443,7 +443,7 @@ if ($remove==1) {
     {
 	if ($a3mdir) {
 	    print("\nGenerating hhm files in $tmpdir/ from a3m files $a3mdir/\n\n");
-	    $command = "hhmake -i \$file -o $tmpdir/\$base.hhm  1>/dev/null 2>>$logfile";
+	    $command = "$hhbin/hhmake -i \$file -o $tmpdir/\$base.hhm  1>/dev/null 2>>$logfile";
 	    &HHPaths::System("$hhscripts/multithread.pl '".$a3mdir."' '$command' -cpu $cpu");	
 	    $hhmdir = $tmpdir."/*.$hhmext";;
 	    $numhhmfiles += scalar(glob("$hhmdir"));
@@ -469,7 +469,7 @@ if ($remove==1) {
 	
 	# Build packed file (concatenated with '\0' as delimiters) and index file from files in file list
 	# The ffindex binaries are contained in <install_dir>/lib/ffindex/bin/
-	$command = "ffindex_build -".$a_if_append."s -f $tmpdir/a3m.filelist $a3mfile $a3mfile.index";
+	$command = "$hhbin/ffindex_build -".$a_if_append."s -f $tmpdir/a3m.filelist $a3mfile $a3mfile.index";
 	&HHPaths::System($command);
 	
 	open (OUT, ">$a3mfile.index.sizes");
@@ -491,7 +491,7 @@ if ($remove==1) {
 	
 	# Build packed file (concatenated with '\0' as delimiters) and index file from files in file list
 	# The ffindex binaries are contained in <install_dir>/lib/ffindex/bin/
-	$command = "ffindex_build -".$a_if_append."s -f $tmpdir/hhm.filelist $hhmfile $hhmfile.index";
+	$command = "$hhbin/ffindex_build -".$a_if_append."s -f $tmpdir/hhm.filelist $hhmfile $hhmfile.index";
 	&HHPaths::System($command);
 	
 	open (OUT, ">$hhmfile.index.sizes");
