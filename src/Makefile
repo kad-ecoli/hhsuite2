@@ -46,7 +46,7 @@ else # ifndef ICC
     HHSEARCH_LIBS = -lpthread -lrt
     HHBLITS_LIBS+=-lrt
     ifndef NO_PNG
-      HHALIGN_LIBS = -DNO_FREETYPE -DHH_PNG -lpng -lz
+      HHALIGN_LIBS = -DNO_FREETYPE -DHH_PNG -lpng -lz -L../lib64
     endif
   endif
 endif # ifndef ICC
