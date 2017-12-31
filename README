@@ -1,3 +1,10 @@
+This is a fork for the old hhsuite 2.x, downloaded from 
+http://gwdu111.gwdg.de/~compbiol/data/hhsuite/releases/all/hhsuite-2.0.16.tar.gz
+with patch from 
+https://gist.github.com/milot-mirdita/fd4b193a2423cc8e71868a3a68ef940f
+
+The following is the original README file.
+
 *****************************************************************************
 *****************************************************************************
    HH-suite for sensitive sequence searching version 2.0.15 (June 2012)
