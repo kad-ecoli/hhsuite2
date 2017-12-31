@@ -1,0 +1,55 @@
+--- A/src/hhprefilter.C 2017-08-28 14:44:32.000000000 +0200
++++ B/src/hhprefilter.C 2013-02-18 14:44:26.000000000 +0100
+@@ -49,7 +49,7 @@
+ #define SHORT_BIAS 32768
+
+ const int NUMCOLSTATES = cs::AS219::kSize;
+ int num_dbs = 0;          // number of sequences in prefilter database file
+ Hash<char>* doubled;
+
+@@ -808,7 +808,7 @@
+ void init_prefilter()
+ {
+   // Get Prefilter Pvalue (Evalue / Par.Dbsize)
+-  LDB = CountSeqsInFile(db, par.dbsize);  // Get DBsize but not number of chars
++  size_t LDB = CountSeqsInFile(db, par.dbsize);  // Get DBsize but not number of chars
+
+   if (par.dbsize == 0 || LDB == 0)
+     {cerr<<endl<<"Error! Could not determine DB-size of prefilter db ("<<db<<")\n"; exit(4);}
+@@ -824,7 +824,7 @@
+   // Read in database
+   num_dbs = 0;
+   int len = 0;
+-  int pos = 0;
++  size_t pos = 0;
+   char word[NAMELEN];
+   FILE* dbf = NULL;
+   dbf = fopen(db,"rb");
+--- A/src/hhutil.C      2017-08-28 14:16:18.000000000 +0200
++++ B/src/hhutil.C      2013-02-18 14:44:26.000000000 +0100
+@@ -508,11 +508,11 @@
+ /////////////////////////////////////////////////////////////////////////////////////
+ // Count the number of sequences "^>" in <file>
+ /////////////////////////////////////////////////////////////////////////////////////
+-int CountSeqsInFile(char* file, int& numseqs)
++size_t CountSeqsInFile(char* file, int& numseqs)
+ {
+   char line[LINELEN]="";         // input line
+   char tmp_file[NAMELEN];
+-  int LDB=0;
++  size_t LDB=0;
+   numseqs=0;
+   strcpy(tmp_file, file);
+   strcat(tmp_file, ".sizes");
+@@ -520,9 +520,8 @@
+   if (fin)
+     {
+       char* ptr=fgets(line, LINELEN, fin);
+-      numseqs = strint(ptr);
+-      LDB = strint(ptr);
++      char * pEnd;
++      numseqs = strtoull(ptr, &pEnd, 10);
++      LDB = strtoull(pEnd, &pEnd, 10);
+       fclose(fin);
+      }
+   else

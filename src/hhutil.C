@@ -508,11 +508,11 @@ void ReadDefaultsFile(int& argc_conf, char** argv_conf, char* path=NULL)
 /////////////////////////////////////////////////////////////////////////////////////
 // Count the number of sequences "^>" in <file>
 /////////////////////////////////////////////////////////////////////////////////////
-int CountSeqsInFile(char* file, int& numseqs)
+size_t CountSeqsInFile(char* file, int& numseqs)
 {
   char line[LINELEN]="";         // input line
   char tmp_file[NAMELEN];
-  int LDB=0;
+  size_t LDB=0;
   numseqs=0;
   strcpy(tmp_file, file);
   strcat(tmp_file, ".sizes");
@@ -520,8 +520,11 @@ int CountSeqsInFile(char* file, int& numseqs)
   if (fin)
     {
       char* ptr=fgets(line, LINELEN, fin);
-      numseqs = strint(ptr);
-      LDB = strint(ptr);
+      //numseqs = strint(ptr);
+      //LDB = strint(ptr);
+      char * pEnd;
+      numseqs = strtoull(ptr, &pEnd, 10);
+      LDB = strtoull(pEnd, &pEnd, 10);
       fclose(fin);
      } 
   else 

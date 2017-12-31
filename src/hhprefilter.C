@@ -49,7 +49,7 @@ struct ali_pos {
 #define SHORT_BIAS 32768
 
 const int NUMCOLSTATES = cs::AS219::kSize;
-int LDB = 0;              // number of characters of input prefilter database file
+//int LDB = 0;            // number of characters of input prefilter database file
 int num_dbs = 0;          // number of sequences in prefilter database file
 Hash<char>* doubled;
 
@@ -808,7 +808,7 @@ void init_no_prefiltering()
 void init_prefilter()
 {
   // Get Prefilter Pvalue (Evalue / Par.Dbsize)
-  LDB = CountSeqsInFile(db, par.dbsize);  // Get DBsize but not number of chars
+  size_t LDB = CountSeqsInFile(db, par.dbsize);  // Get DBsize but not number of chars
 
   if (par.dbsize == 0 || LDB == 0)
     {cerr<<endl<<"Error! Could not determine DB-size of prefilter db ("<<db<<")\n"; exit(4);}
@@ -824,7 +824,7 @@ void init_prefilter()
   // Read in database
   num_dbs = 0;
   int len = 0;
-  int pos = 0;
+  size_t pos = 0;
   char word[NAMELEN];
   FILE* dbf = NULL;
   dbf = fopen(db,"rb");
