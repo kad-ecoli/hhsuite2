@@ -36,7 +36,6 @@ my $desclen=1000;           # maximum number of characters in nameline
 my $ARGC=scalar(@ARGV);
 if ($ARGC<2) {
     die("
-reformat.pl from HHsuite version 2.0.16
 Read a multiple alignment in one format and write it in another format
 Usage: reformat.pl [informat] [outformat] infile outfile [options] 
   or   reformat.pl [informat] [outformat] 'fileglob' .ext [options] 
