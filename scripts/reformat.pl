@@ -27,8 +27,8 @@
 
 #     We are very grateful for bug reports! Please contact us at soeding@genzentrum.lmu.de
 
-use lib $ENV{"HHLIB"}."/scripts";
-use HHPaths;   # config file with path variables for nr, blast, psipred, pdb, dssp etc.
+#use lib $ENV{"HHLIB"}."/scripts";
+#use HHPaths;   # the only variable reformat uses is $VERSION
 use strict;
 use warnings;
 my $numres=100;             # number of residues per line
@@ -36,7 +36,7 @@ my $desclen=1000;           # maximum number of characters in nameline
 my $ARGC=scalar(@ARGV);
 if ($ARGC<2) {
     die("
-reformat.pl from HHsuite $VERSION  
+reformat.pl from HHsuite version 2.0.16
 Read a multiple alignment in one format and write it in another format
 Usage: reformat.pl [informat] [outformat] infile outfile [options] 
   or   reformat.pl [informat] [outformat] 'fileglob' .ext [options] 
