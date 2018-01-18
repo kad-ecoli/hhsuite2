@@ -3,3 +3,6 @@
 
 # object files
 *.o
+
+# compiled python file
+*.pyc

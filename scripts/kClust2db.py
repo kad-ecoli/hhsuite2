@@ -19,15 +19,7 @@ import sys,os
 import subprocess
 from string import Template
 
-HHLIB=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-bin_dict=dict(
-    kClust=os.path.join(HHLIB,"bin/kClust"),
-    kClust_mkAln=os.path.join(HHLIB,"bin/kClust_mkAln"),
-    clustalo=os.path.join(HHLIB,"bin/clustalo"),
-    reformat=os.path.join(HHLIB,"scripts/reformat.pl"),
-    hhblitsdb=os.path.join(HHLIB,"scripts/hhblitsdb.pl"),
-)
+from HHPaths import HHLIB,bin_dict
 
 id2s_dict= { 20:0.52, 30:1.12, 40:1.73, 50:2.33,
     60:2.93, 70:3.53, 80:4.14, 90:4.74, 99:5.28}
@@ -78,7 +70,7 @@ def kClust2db(infile,outdb,tmpdir='.',s=1.12,ncpu=1):
         stdout=subprocess.PIPE).communicate()
 
     sys.stdout.write("#### reformat fas into a3m ####\n")
-    os.environ["HHLIB"]=HHLIB
+    #os.environ["HHLIB"]=HHLIB
     a3mdir=os.path.join(tmpdir,"a3m")
     mkdir_if_not_exist(a3mdir)
     for filename in stdout.splitlines():
