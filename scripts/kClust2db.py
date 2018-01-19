@@ -19,7 +19,7 @@ import sys,os
 import subprocess
 from string import Template
 
-from HHPaths import HHLIB,bin_dict
+from HHPaths import bin_dict
 
 id2s_dict= { 20:0.52, 30:1.12, 40:1.73, 50:2.33,
     60:2.93, 70:3.53, 80:4.14, 90:4.74, 99:5.28}
@@ -70,7 +70,6 @@ def kClust2db(infile,outdb,tmpdir='.',s=1.12,ncpu=1):
         stdout=subprocess.PIPE).communicate()
 
     sys.stdout.write("#### reformat fas into a3m ####\n")
-    #os.environ["HHLIB"]=HHLIB
     a3mdir=os.path.join(tmpdir,"a3m")
     mkdir_if_not_exist(a3mdir)
     for filename in stdout.splitlines():
