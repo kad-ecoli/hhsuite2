@@ -17,6 +17,7 @@ Options:
 '''
 import sys,os
 import subprocess
+import shutil
 from string import Template
 
 from HHPaths import bin_dict
@@ -94,7 +95,7 @@ def kClust2db(infile,outdb,tmpdir='.',s=1.12,ncpu=1):
 
 if __name__=="__main__":
     seqID=30
-    ncpu=30
+    ncpu=1
     tmpdir=''
     
     argv=[]
@@ -128,3 +129,5 @@ if __name__=="__main__":
     tmpdir=make_tmpdir(tmpdir)
 
     kClust2db(infile,outdb,tmpdir,s,ncpu)
+    if os.path.isdir(tmpdir):
+        shutil.rmtree(tmpdir)
