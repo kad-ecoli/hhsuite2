@@ -285,7 +285,29 @@ void Parameters::SetDefaultPaths(char *program_path)
   if(getenv("HHLIB"))
     strcpy(hhlib, getenv("HHLIB"));
   else
+  {
+#ifdef __linux__ 
+    char buf[PATH_MAX]="";
+    int count=readlink("/proc/self/exe", buf, PATH_MAX);
+    if(count<0 || count>=PATH_MAX)
+    {
+        cerr<<"WARNING! Cannot find  executable folder.\n";
+        strcpy(hhlib, "/usr/lib/hh");
+    }
+    else
+    {
+        for(int i=PATH_MAX-1; i>=0; i--)
+        {
+            if(buf[i]=='/') break;
+            else buf[i]='\0';
+        }
+        sprintf(hhlib, "%s..", buf);
+    }
+#else
     strcpy(hhlib, "/usr/lib/hh");
+#endif
+  }
+  cout<<"hhlib="<<hhlib<<endl;
 
   strcat(strcpy(hhdata, hhlib), "/data");
   strcat(strcpy(clusterfile, hhdata), "/context_data.lib");
