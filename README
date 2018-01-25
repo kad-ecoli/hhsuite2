@@ -12,6 +12,7 @@ legacy BLAST 2.2.26
 
 It also contain, under bin/ folder, custom binary executables from:
 qhmmer (https://github.com/kad-ecoli/qhmmer)
+MSAParser (https://github.com/kad-ecoli/MSAParser)
 
 The following is the original README file for hhsuite 2.0.15 and 2.0.16.
 
