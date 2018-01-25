@@ -9,6 +9,7 @@ kClust 1.0
 Clustal Omega 1.2.4
 PSIPRED 4.0.1
 legacy BLAST 2.2.26
+solvpred (from MetaPSICOV 1.04)
 
 It also contain, under bin/ folder, custom binary executables from:
 qhmmer (https://github.com/kad-ecoli/qhmmer)
