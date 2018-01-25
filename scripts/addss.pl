@@ -181,7 +181,7 @@ if ($informat ne "hmm") {
     if ($qseq =~ /\-/) {
 	
 	# First sequence contains gaps => calculate consensus sequence
-	&HHPaths::System("hhconsensus -i $tmpfile.in.a3m -s $tmpfile.sq -o $tmpfile.in.a3m > /dev/null");
+	&HHPaths::System("$hhbin/hhconsensus -i $tmpfile.in.a3m -s $tmpfile.sq -o $tmpfile.in.a3m > /dev/null");
 	
     } else {
 	
@@ -196,7 +196,7 @@ if ($informat ne "hmm") {
     
     # Filter alignment to diversity $neff 
     if ($v>=1) {printf ("Filtering alignment to diversity $neff ...\n");}
-    &HHPaths::System("hhfilter -v $v2 -neff $neff -i $tmpfile.in.a3m -o $tmpfile.in.a3m");
+    &HHPaths::System("$hhbin/hhfilter -v $v2 -neff $neff -i $tmpfile.in.a3m -o $tmpfile.in.a3m");
     
     # Reformat into PSI-BLAST readable file for jumpstarting 
     &HHPaths::System("$hhscripts/reformat.pl -v $v2 -r -noss a3m psi $tmpfile.in.a3m $tmpfile.in.psi");
@@ -448,6 +448,7 @@ sub RunPsipred() {
     }
 
     &HHPaths::System("$execdir/psipass2 $datadir/weights_p2.dat 1 0.98 1.09 $tmpfile.ss2 $tmpfile.ss > $tmpfile.horiz");
+    #&HHPaths::System("$execdir/psipass2 $datadir/weights_p2.dat 1 1.0 1.0 $tmpfile.ss2 $tmpfile.ss > $tmpfile.horiz");
     
     # Remove temporary files
     if ($v<=3) { unlink(split ' ', "$tmpfile.pn $tmpfile.sn $tmpfile.mn $tmpfile.chk $tmpfile.blalog $tmpfile.mtx $tmpfile.aux $tmpfile.ss $tmpfile.ss2 $tmpfile.sq");}

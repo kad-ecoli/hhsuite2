@@ -37,9 +37,9 @@ our @EXPORT  = qw($VERSION $hhlib $hhdata $hhbin $hhscripts $execdir $datadir $n
 #our $execdir = ".../psipred/bin";         # path to PSIPRED V2 binaries
 #our $datadir = ".../psipred/data";        # path to PSIPRED V2 data files
 #our $ncbidir = ".../blast/bin";           # path to NCBI binaries (for PSIPRED in addss.pl)
-our $execdir = "/cluster/toolkit/production/bioprogs/psipred/bin";  # path to PSIPRED V2 binaries
-our $datadir = "/cluster/toolkit/production/bioprogs/psipred/data"; # path to PSIPRED V2 data files
-our $ncbidir = "/cluster/toolkit/production/bioprogs/blast/bin";    # path to NCBI binaries (for PSIPRED in addss.pl)
+our $execdir = "$ENV{HHLIB}/bin";  # path to PSIPRED V4 binaries
+our $datadir = "$ENV{HHLIB}/data"; # path to PSIPRED V4 data files
+our $ncbidir = "$ENV{HHLIB}/bin";  # path to NCBI binaries (for PSIPRED in addss.pl)
 
 ##############################################################################################
 # PLEASE COMPLETE THE PATHS ... TO YOUR LOCAL PDB FILES, DSSP FILES ETC.
