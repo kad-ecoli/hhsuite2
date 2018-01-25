@@ -3,10 +3,17 @@ http://gwdu111.gwdg.de/~compbiol/data/hhsuite/releases/all/hhsuite-2.0.16.tar.gz
 with patch from 
 https://gist.github.com/milot-mirdita/fd4b193a2423cc8e71868a3a68ef940f
 
-In addition to hhsuite 2.0.16, this package also include unmodified binary
-executables from kClust 1.0 and Clustal Omega 1.2.4 under bin/ folder.
+In addition to hhsuite 2.0.16, this package also include, under bin/ folder, 
+binary executables from:
+kClust 1.0
+Clustal Omega 1.2.4
+PSIPRED 4.0.1
+legacy BLAST 2.2.26
 
-The following is the original README file.
+It also contain, under bin/ folder, custom binary executables from:
+qhmmer (https://github.com/kad-ecoli/qhmmer)
+
+The following is the original README file for hhsuite 2.0.15 and 2.0.16.
 
 *****************************************************************************
 *****************************************************************************
