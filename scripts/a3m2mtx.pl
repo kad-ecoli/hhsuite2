@@ -5,7 +5,6 @@
 
 use lib $ENV{"HHLIB"}."/scripts";
 use HHPaths;   # config file with path variables for nr, blast, psipred, pdb, dssp etc.
-use Align;     # Needleman-Wunsch and Smith-Waterman alignment functions
 use File::Temp qw/ tempfile tempdir /;
 use strict;
 
@@ -43,11 +42,6 @@ my $name;              # query in fasta format: '>$name [^\n]*\n$qseq\n'
 my $qseq;              # residues of query sequence
 my $infile;
 my $outfile;
-my $aa_astr;           # residues from infile as string
-my $q_match;           # number of match states in query sequence
-my $xseq;              # sequence x returned from Align.pm
-my $yseq;              # sequence y returned from Align.pm  
-my $Sstr;              # match sequence returned from Align.pm
 
 ###############################################################################################
 # Processing command line input
