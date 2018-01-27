@@ -26,14 +26,13 @@
 
 #     We are very grateful for bug reports! Please contact us at soeding@genzentrum.lmu.de
 
-use lib $ENV{"HHLIB"}."/scripts";
-use HHPaths;   # config file with path variables for nr, blast, psipred, pdb, dssp etc.
+#use lib $ENV{"HHLIB"}."/scripts";
+#use HHPaths;   # config file with path variables for nr, blast, psipred, pdb, dssp etc.
 use strict;
 use warnings;
 
 my $ext="seq";
 my $usage="
-splitfasta.pl from HHsuite $VERSION  
 Split a file with multiple, FASTA formatted sequences into multiple single-sequence FASTA files.
 Write files into current directory and name each file by the first word after \">\" in the name line. 
 
@@ -79,7 +78,7 @@ if ($fam) {
 		close(OUTFILE);
 	    }
 	    if (defined $numfams{$fam}) {$numfams{$fam}++;} else {$numfams{$fam}=1};
-	    $outfile="$fam.".$numfams{$fam}.".seq";
+	    $outfile="$fam.".$numfams{$fam}.".$ext";
 	    $sequence=$line;
 	    $n++;
 	} else {
@@ -107,7 +106,7 @@ if ($fam) {
 	    my $tmp = $1;
 	    $tmp =~ s/\|/_/g;
 	    $tmp =~ s/\./_/g;
-	    $outfile="$tmp.seq";
+	    $outfile="$tmp.$ext";
 	    $sequence=$line;
 	    $n++;
 	} else {
