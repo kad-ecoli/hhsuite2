@@ -40,6 +40,7 @@ source code and/or binary executables from the following packages.
 
 The main program is [scripts/build_MSA.py](scripts/build_MSA.py). You can
 run the script without any command line argument to get the help message.
+<b>The program needs python2.7</b>; python3 will result in error.
 
 #### License ####
 
